@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--favicon-->
 
-
-    <link rel="icon" href="{{ asset('admin/assets/images/favicon-32x32.png') }}" type="image/png" />
+    {{ asset('admin.') }}
+    <link rel="icon" href="{{ asset('admin.') }}assets/images/favicon-32x32.png" type="image/png" />
     <!--plugins-->
     <link href="{{ asset('admin/assets/plugins/vectormap/jquery-jvectormap-2.0.2.css') }}" rel="stylesheet"/>
     <link href="{{ asset('admin/assets/plugins/simplebar/css/simplebar.css" rel="stylesheet') }}" />
@@ -26,6 +26,10 @@
     <link rel="stylesheet" href="{{ asset('admin/assets/css/semi-dark.css') }}" />
     <link rel="stylesheet" href="{{ asset('admin/assets/css/header-colors.css') }}" />
     <title>Rukada - Responsive Bootstrap 5 Admin Template</title>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="{{ asset('admin/assets/plugins/input-tags/css/tagsinput.css') }}" rel="stylesheet" />
 </head>
 
 <body>
@@ -155,7 +159,7 @@
 </div>
 <!--end switcher-->
 <!-- Bootstrap JS -->
-<script src="{{ asset('admin/') }}assets/js/bootstrap.bundle.min.js"></script>
+<script src="{{ asset('admin/assets/js/bootstrap.bundle.min.js') }}"></script>
 <!--plugins-->
 <script src="{{ asset('admin/assets/js/jquery.min.js') }}"></script>
 <script src="{{ asset('admin/assets/plugins/simplebar/js/simplebar.min.js') }}"></script>
@@ -176,6 +180,21 @@
 <script src="{{ asset('admin/assets/js/index.js') }}"></script>
 <!--app JS-->
 <script src="{{ asset('admin/assets/js/app.js') }}"></script>
+
+
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#image').change(function(e) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                $('#showImage').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(e.target.files['0']);
+        });
+    });
+</script>
+
 </body>
 
 </html>
