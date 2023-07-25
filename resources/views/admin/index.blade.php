@@ -2,6 +2,16 @@
 
 
 @section('admin')
+    @php
+        $categories = App\Models\Category::all();
+        $subcategories = App\Models\SubCategory::all();
+        $products = App\Models\ProductList::all();
+         $users = App\Models\User::all();
+         $message=App\Models\Contact::all();
+         $orders =  App\Models\CartOrder::all();
+         $favourites = App\Models\Favourites::all();
+
+    @endphp
 
     <div class="page-content">
 
@@ -10,7 +20,7 @@
                 <div class="card radius-10 bg-gradient-deepblue">
                     <div class="card-body">
                         <div class="d-flex align-items-center">
-                            <h5 class="mb-0 text-white">9526</h5>
+                            <h5 class="mb-0 text-white">{{count($categories)}}</h5>
                             <div class="ms-auto">
                                 <i class='bx bx-cart fs-3 text-white'></i>
                             </div>
@@ -19,7 +29,7 @@
                             <div class="progress-bar bg-white" role="progressbar" style="width: 55%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
                         <div class="d-flex align-items-center text-white">
-                            <p class="mb-0">Total Orders</p>
+                            <p class="mb-0">Total Categories</p>
                             <p class="mb-0 ms-auto">+4.2%<span><i class='bx bx-up-arrow-alt'></i></span></p>
                         </div>
                     </div>
@@ -29,7 +39,7 @@
                 <div class="card radius-10 bg-gradient-orange">
                     <div class="card-body">
                         <div class="d-flex align-items-center">
-                            <h5 class="mb-0 text-white">$8323</h5>
+                            <h5 class="mb-0 text-white">{{count($subcategories)}}</h5>
                             <div class="ms-auto">
                                 <i class='bx bx-dollar fs-3 text-white'></i>
                             </div>
@@ -38,7 +48,7 @@
                             <div class="progress-bar bg-white" role="progressbar" style="width: 55%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
                         <div class="d-flex align-items-center text-white">
-                            <p class="mb-0">Total Revenue</p>
+                            <p class="mb-0">Total Subcategories</p>
                             <p class="mb-0 ms-auto">+1.2%<span><i class='bx bx-up-arrow-alt'></i></span></p>
                         </div>
                     </div>
@@ -48,7 +58,7 @@
                 <div class="card radius-10 bg-gradient-ohhappiness">
                     <div class="card-body">
                         <div class="d-flex align-items-center">
-                            <h5 class="mb-0 text-white">6200</h5>
+                            <h5 class="mb-0 text-white">{{count($users)}}</h5>
                             <div class="ms-auto">
                                 <i class='bx bx-group fs-3 text-white'></i>
                             </div>
@@ -67,7 +77,7 @@
                 <div class="card radius-10 bg-gradient-ibiza">
                     <div class="card-body">
                         <div class="d-flex align-items-center">
-                            <h5 class="mb-0 text-white">5630</h5>
+                            <h5 class="mb-0 text-white">{{ count($products) }}</h5>
                             <div class="ms-auto">
                                 <i class='bx bx-envelope fs-3 text-white'></i>
                             </div>
@@ -144,25 +154,21 @@
                         <table class="table align-items-center mb-0">
                             <tbody>
                             <tr>
-                                <td><i class="bx bxs-circle me-2" style="color: #14abef"></i> Direct</td>
-                                <td>$5856</td>
+                                <td><i class="bx bxs-circle me-2" style="color: #14abef"></i> message</td>
+                                <td>{{ count($message) }}</td>
                                 <td>+55%</td>
                             </tr>
                             <tr>
-                                <td><i class="bx bxs-circle me-2" style="color: #02ba5a"></i>Affiliate</td>
-                                <td>$2602</td>
+                                <td><i class="bx bxs-circle me-2" style="color: #02ba5a"></i>Oredes</td>
+                                <td>{{ count($orders) }}</td>
                                 <td>+25%</td>
                             </tr>
                             <tr>
-                                <td><i class="bx bxs-circle me-2" style="color: #d13adf"></i>E-mail</td>
-                                <td>$1802</td>
+                                <td><i class="bx bxs-circle me-2" style="color: #d13adf"></i>Favorates</td>
+                                <td>{{ count($favourites) }}</td>
                                 <td>+15%</td>
                             </tr>
-                            <tr>
-                                <td><i class="bx bxs-circle me-2" style="color: #fba540"></i>Other</td>
-                                <td>$1105</td>
-                                <td>+5%</td>
-                            </tr>
+
                             </tbody>
                         </table>
                     </div>

@@ -1,12 +1,10 @@
 <!doctype html>
 <html lang="en">
-
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--favicon-->
-
     {{ asset('admin.') }}
     <link rel="icon" href="{{ asset('admin.') }}assets/images/favicon-32x32.png" type="image/png" />
     <!--plugins-->
@@ -25,30 +23,26 @@
     <link rel="stylesheet" href="{{ asset('admin/assets/css/dark-theme.css') }}" />
     <link rel="stylesheet" href="{{ asset('admin/assets/css/semi-dark.css') }}" />
     <link rel="stylesheet" href="{{ asset('admin/assets/css/header-colors.css') }}" />
-    <title>Rukada - Responsive Bootstrap 5 Admin Template</title>
+
+    <title>My Site</title>
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link href="{{ asset('admin/assets/plugins/input-tags/css/tagsinput.css') }}" rel="stylesheet" />
 </head>
-
 <body>
 <!--wrapper-->
 <div class="wrapper">
     <!--sidebar wrapper -->
-
     <!-- include is meaning static and yield is meaning dynamic -->
     @include('admin.body.sidebar')
-
     <!--end sidebar wrapper -->
     <!--start header -->
-     @include('admin.body.header')
-
+    @include('admin.body.header')
     <!--end header -->
     <!--start page wrapper -->
     <div class="page-wrapper">
         @yield('admin')
-
     </div>
     <!--end page wrapper -->
     <!--start overlay-->
@@ -57,7 +51,6 @@
     <!--Start Back To Top Button--> <a href="javaScript:;" class="back-to-top"><i class='bx bxs-up-arrow-alt'></i></a>
     <!--End Back To Top Button-->
     @include('admin.body.footer')
-
 </div>
 <!--end wrapper-->
 <!--start switcher-->
@@ -122,7 +115,6 @@
                 </div>
             </div>
         </div>
-
         <hr/>
         <h6 class="mb-0">Sidebar Backgrounds</h6>
         <hr/>
@@ -154,7 +146,6 @@
                 </div>
             </div>
         </div>
-
     </div>
 </div>
 <!--end switcher-->
@@ -180,9 +171,6 @@
 <script src="{{ asset('admin/assets/js/index.js') }}"></script>
 <!--app JS-->
 <script src="{{ asset('admin/assets/js/app.js') }}"></script>
-
-
-
 <script type="text/javascript">
     $(document).ready(function() {
         $('#image').change(function(e) {
@@ -194,13 +182,10 @@
         });
     });
 </script>
-
 <!--Install notification system-->
 <!--toastr-->
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
-
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-
 <script>
     @if(Session::has('message'))
     var type = "{{ Session::get('alert-type','info') }}"
@@ -220,7 +205,33 @@
     }
     @endif
 </script>
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script type="text/javascript">
+    $(function(){
+        $(document).on('click','#delete',function(e){
+            e.preventDefault();
+            var link = $(this).attr("href");
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "Delete This Data?",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = link
+                    Swal.fire(
+                        'Deleted!',
+                        'Your file has been deleted.',
+                        'success'
+                    )
+                }
+            })
+        });
+    });
+</script>
+<script src="{{ asset('admin/assets/plugins/input-tags/js/tagsinput.js') }}"></script>
 </body>
-
 </html>
